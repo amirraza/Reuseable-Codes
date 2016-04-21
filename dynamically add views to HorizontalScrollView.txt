@@ -1,0 +1,42 @@
+
+//Add this xml to layout
+<HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/postAJobAttaches"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+               
+</HorizontalScrollView>
+
+//find reference of LinearLayout
+LinearLayout postAJobAttaches = (LinearLayout) view.findViewById(R.id.postAJobAttaches);
+
+//Add dynamically ImageViews to this ref
+for(int i=0;i<10;i++){
+                ImageView imageView = new ImageView(getActivity());
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(180, 180);
+                layoutParams.setMarginStart(25);
+                imageView.setLayoutParams(layoutParams);
+                imageView.setImageURI(Uri.parse(selectedFilesUriArray[i]));
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                postAJobAttaches.addView(imageView);
+}
+
+//add TextViews
+for(int i=0;i<10;i++){
+                TextView textView = new TextView(getActivity());
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMarginStart(30);
+                textView.setLayoutParams(layoutParams);
+                textView.setBackground(getActivity().getResources().getDrawable(R.drawable.gray_btn_border));
+                textView.setPadding(50,25,50,25);
+                textView.setText(skillsNameArray[i]);
+                postAJobAttaches.addView(textView);
+}
+
