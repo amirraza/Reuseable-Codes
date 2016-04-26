@@ -1,0 +1,44 @@
+//To use custom font at globle level you have to use Reflection to override one of the default font.. you can not use this with reflection
+
+1. create a class that extands with Application.
+
+e.g. public class MyClass extands Application{}
+
+add this code in onCreate method
+
+String fontPath = "fonts/source-sans-pro.regular.ttf"; //this is your custom font path. must be in assets/fonts
+Typeface regular = Typeface.createFromAsset(getAssets(),fontPath);
+        try {
+            final Field field = Typeface.class.getDeclaredField("MONOSPACE"); //this will override default monospace font
+            field.setAccessible(true);
+            field.set(null,regular);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+2. in manifest.xml add name attribute in <aplication>
+
+e.g. <application name=".MyClass" ...></application>
+
+3. open style.xml and add this
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+  
+	<!-- Add this -->
+        <item name="android:textViewStyle">@style/myStyle</item>
+    </style>
+
+    <style name="myStyle" parent="android:Widget.TextView">
+        <item name="android:typeface">monospace</item>
+    </style>
+    
+</resources>
+
+
+Thats it...

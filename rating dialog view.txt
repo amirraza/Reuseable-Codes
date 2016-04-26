@@ -1,0 +1,102 @@
+
+//create a drawable
+
+apptheme_ratingbar_big_holo_light.xml
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@android:id/background"
+        android:drawable="@drawable/rating_bar_gray_big" />
+    <item
+        android:id="@android:id/progress"
+        android:drawable="@drawable/rating_bar_full_big" />
+<!-- Resize your star icon -->
+</layer-list>
+
+
+//add this drawble to RatingBar's progressDrawable
+
+//create this xml
+
+rate_dialog_view.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_margin="20dp"
+        android:gravity="center"/>
+    <RatingBar
+        android:id="@+id/giveReviewRating"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:progressDrawable="@drawable/apptheme_ratingbar_big_holo_light"
+        android:stepSize="1"
+        android:numStars="5"
+        android:rating="0"
+        android:layout_gravity="center"/>
+    <EditText
+        android:id="@+id/giveReviewFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Write a review"
+        android:layout_margin="20dp"
+        android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/rateDone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:text="Done"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="10dp"/>
+</LinearLayout>
+
+//add this to your code
+private void showRateDialog() {
+        Dialog dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.rate_dialog_view);
+
+        final RatingBar ratingBar = (RatingBar) dialog.findViewById(R.id.giveReviewRating);
+        final EditText feedbackET = (EditText) dialog.findViewById(R.id.giveReviewFeedback);
+
+        TextView dialogButton = (TextView) dialog.findViewById(R.id.rateDone);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float rating = ratingBar.getRating();
+                String feedback = feedbackET.getText().toString();
+                if(feedback.equalsIgnoreCase("")){
+                    Toast.makeText(getActivity(), "Please write your feedback.", Toast.LENGTH_SHORT).show();
+                } else {
+                    hitNetworkForReview(""+Math.round(rating),feedback);
+                }
+            }
+        });
+
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+        dialog.show();
+
+    }
