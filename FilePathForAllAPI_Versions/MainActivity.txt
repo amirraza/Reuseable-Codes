@@ -1,0 +1,15 @@
+//	      File file = new File(data.getData().getPath()/*uri*/);
+//            Log.d("PAAAgetName", file.getName());
+//            Log.d("PAAAgetExtension", FileUtils.getExtension("" + data.getData()));
+//            Log.d("PAAAgetMimeType", FileUtils.getMimeType(MainActivity.this, data.getData()));
+//            Log.d("PAAAgetMimeTypeFIle", FileUtils.getMimeType(file));
+//            Log.d("PAAAgetPath", FileUtils.getPath(MainActivity.this, data.getData()));
+//            Log.d("PAAAgetFile", FileUtils.getFile(MainActivity.this, data.getData()) + "");
+//            Log.d("PAAAgetPathWithtFlenae", FileUtils.getPathWithoutFilename(file) + "");
+//            Log.d("PAAAgetUri", FileUtils.getUri(file) + "");
+//            Log.d("PAAAisGooglePhotosUri", FileUtils.isGooglePhotosUri(data.getData()) + "");
+//            Log.d("PAAAisMediaUri", FileUtils.isMediaUri(data.getData()) + "");
+//            Log.d("PAAAisMediaDocument", FileUtils.isMediaDocument(data.getData()) + "");
+//            Log.d("PAAAisExtrnlStrgDocment", FileUtils.isExternalStorageDocument(data.getData()) + "");
+//            Log.d("PAAAisDownloadsDocumnt", FileUtils.isDownloadsDocument(data.getData()) + "");
+//            Log.d("PAAAisLclStrgeDocument", FileUtils.isLocalStorageDocument(data.getData()) + "");
