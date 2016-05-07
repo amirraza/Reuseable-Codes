@@ -1,0 +1,25 @@
+    <string name="date_util_term_less">less than</string>
+    <string name="date_util_term_a">1</string>
+    <string name="date_util_term_an">1</string>
+
+    <string name="date_util_unit_second">sec</string>
+    <string name="date_util_unit_seconds">sec</string>
+    <string name="date_util_unit_minute">min</string>
+    <string name="date_util_unit_minutes">mins</string>
+    <string name="date_util_unit_hour">hour</string>
+    <string name="date_util_unit_hours">hours</string>
+    <string name="date_util_unit_day">day</string>
+    <string name="date_util_unit_days">days</string>
+    <string name="date_util_unit_week">week</string>
+    <string name="date_util_unit_weeks">weeks</string>
+    <string name="date_util_unit_month">month</string>
+    <string name="date_util_unit_months">months</string>
+    <string name="date_util_unit_year">year</string>
+    <string name="date_util_unit_years">years</string>
+
+    <string name="date_util_prefix_lt">less than a</string>
+    <string name="date_util_prefix_about"></string>
+    <string name="date_util_prefix_over">over</string>
+    <string name="date_util_prefix_almost">almost</string>
+
+    <string name="date_util_suffix">Ago</string>

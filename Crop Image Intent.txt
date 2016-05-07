@@ -1,0 +1,34 @@
+@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            if (requestCode == 2 && resultCode == Activity.RESULT_OK && null != data) {
+                Uri selectedImage = data.getData();
+                try {
+                    Intent intent = new Intent("com.android.camera.action.CROP");
+                    intent.setData(selectedImage);
+                    intent.putExtra("crop", "true");
+                    intent.putExtra("aspectX", 1);
+                    intent.putExtra("aspectY", 1);
+                    intent.putExtra("outputX", 256);
+                    intent.putExtra("outputY", 256);
+                    intent.putExtra("noFaceDetection", true);
+                    intent.putExtra("return-data", true);
+                    startActivityForResult(intent, 3);
+                    //completeProfileImage.setImageURI(selectedImage);
+                } catch (OutOfMemoryError error) {
+                    Utils.Toast("Image is too large, Please select small one");
+                    error.printStackTrace();
+                } catch (Exception e) {
+                    Utils.Toast("Error occur while selecting image, Please try once");
+                    e.printStackTrace();
+                }
+            } else if (requestCode == 3 && resultCode == Activity.RESULT_OK && null != data) {
+                Bundle extras = data.getExtras();
+                Bitmap image = extras.getParcelable("data");
+                //completeProfileImage.setImageBitmap(image);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }

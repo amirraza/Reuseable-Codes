@@ -1,0 +1,22 @@
+
+
+// e.g. 15:30:45
+public void getTime(final TextView timeView) {
+        timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                String min = "" + minute;
+                String hrs = "" + hourOfDay;
+                if (hourOfDay < 10) {
+                    hrs = "0" + hourOfDay;
+                }
+                if (minute < 10) {
+                    min = "0" + minute;
+//                    Toast.makeText(getActivity(), min, Toast.LENGTH_SHORT).show();
+                }
+                timeView.setText(new StringBuilder().append(hrs).append(":").append(min)
+                        .append(":").append("00"));
+            }
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+        timePickerDialog.show();
+    }

@@ -1,0 +1,179 @@
+
+//if you have time coming from API or elsewhere like 2016-05-26 22:50:21
+//and you want to print as TimeAgo format e.g. 2 days ago
+
+public static String getTimeAgo(String YOUR_TIME){
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	Date date = sdf.parse(YOUR_TIME);
+	return "" + Timestamps.getTimeAgo(date, context));//you can find Timestamps in this root dir
+   }
+
+    //if you want to print as 11:45 PM
+    public static String getTimeAM_PM(String YOUR_TIME){
+        String time = "";
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm aa");
+            Date date = sdf.parse(YOUR_TIME);
+            time = sdfTime.format(date);
+        } catch (Exception e){e.printStackTrace();}
+        return time;
+    }
+
+    //if Mar 25, 2016
+    public static String getData(String YOUR_TIME){
+        String strDate = "";
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            Date date = sdf.parse(YOUR_TIME);
+            Calendar c = Calendar.getInstance();
+            c.setTime(date);
+            strDate = c.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault())+" ";
+            strDate += c.get(Calendar.DAY_OF_MONTH)+", ";
+            strDate += c.get(Calendar.YEAR);
+        } catch (Exception e){e.printStackTrace(); }
+        return strDate;
+    }
+
+
+    //current date as Mar 25, 2016
+    public static String getCurrentDate(){
+        String strDate="";
+            Calendar c = Calendar.getInstance();
+            strDate = c.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault())+" ";
+            strDate += c.get(Calendar.DAY_OF_MONTH)+", ";
+            strDate += c.get(Calendar.YEAR);
+        return strDate;
+    }
+
+
+    //current date as March 25, 2016
+    public static String getCurrentDate1(){
+        String strDate = "";
+            Calendar c = Calendar.getInstance();
+            strDate = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())+" ";
+            strDate += c.get(Calendar.DAY_OF_MONTH)+", ";
+            strDate += c.get(Calendar.YEAR);
+        return strDate;
+    }
+
+
+    //current date as 2016-06-23
+    public static String getCurrentDate2(){
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+        return sdfDate.format(System.currentTimeMillis());
+    }
+
+    //current date as 2016/06/23
+    public static String getCurrentDate3(){
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy/MM/dd");
+        return sdfDate.format(System.currentTimeMillis());
+    }
+
+
+    //current time as 10:05:21
+    public static String getCurrentTime(){
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss");
+        return sdfTime.format(System.currentTimeMillis());
+    }
+
+
+    //current time as 10:05 AM
+    public static String getCurrentTime1(){
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm aa");
+        return sdfTime.format(System.currentTimeMillis());
+    }
+
+    //number of days before from current date as 2016-05-23 05:23:50 e.g. 5 days before etc..
+    public static String getBeforeDate(int numberOfDaysBefore) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -numberOfDaysBefore);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+
+    //number of days before from current date as 2016-05-23 05:23 AM e.g. 5 days before etc..
+    public static String getBeforeDate1(int numberOfDaysBefore) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -numberOfDaysBefore);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm aa");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+
+    //number of days before from current date as 2016/05/23 05:23:50 e.g. 5 days before etc..
+    public static String getBeforeDate2(int numberOfDaysBefore) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -numberOfDaysBefore);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+
+    //number of days before from current date as 2016/05/23 05:23 PM e.g. 5 days before etc..
+    public static String getBeforeDate3(int numberOfDaysBefore) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -numberOfDaysBefore);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm aa");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+
+    //number of days ahead from current date as 2016-05-23 05:23:50 e.g. 5 days from now etc..
+    public static String getAheadDate(int numberOfDaysFromNow) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, numberOfDaysFromNow);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+
+
+    //number of days ahead from current date as 2016-05-23 05:23 AM e.g. 5 days from now etc..
+    public static String getAheadDate1(int numberOfDaysFromNow) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, numberOfDaysFromNow);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm aa");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+
+    //number of days ahead from current date as 2016/05/23 05:23 AM e.g. 5 days from now etc..
+    public static String getAheadDate2(int numberOfDaysFromNow) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, numberOfDaysFromNow);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm aa");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+
+    //number of days and time in hours before from current date as 2016-05-23 05:23:50 e.g. 5 days 2 hours before etc..
+    public static String getBeforeDateAndTime(int numberOfDaysBefore, int numberOfHoursBefore) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -numberOfDaysBefore);
+        calendar.add(Calendar.HOUR, -numberOfHoursBefore);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+
+    //number of days and time in hours ahead from current date as 2016-05-23 05:23:50 e.g. 5 days 2 hours ahead etc..
+    public static String getAheadDateAndTime(int numberOfDaysAhead, int numberOfHoursAhead) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, numberOfDaysAhead);
+        calendar.add(Calendar.HOUR, numberOfHoursAhead);
+        Date date = calendar.getTime();
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("hh:mm:ss");
+        return sdfDate.format(date)+" "+sdfTime.format(date);
+    }
+

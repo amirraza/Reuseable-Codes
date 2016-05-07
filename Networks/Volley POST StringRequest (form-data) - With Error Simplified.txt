@@ -1,0 +1,81 @@
+
+//Required 
+
+//url to hit
+//auth - if your request needed
+//Map<String, String> - parameters which is required with post request
+//ServiceListener - is your custom listener (interface) to listen success/fail from where you call this method.
+
+public void post(String url, final String auth, final Map<String, String> map, final ServiceListener listener) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        listener.success(s);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                NetworkResponse response = volleyError.networkResponse;
+                if (response != null && response.data != null) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(new String(response.data));
+//                        String msg = jsonObject.getString("response");//{}
+//                        String code = jsonObject.getString("code");//422,400,...
+                        JSONArray jsonArray = jsonObject.getJSONArray("errors");
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+                        String message = jsonObject1.getString("message");
+                        if (message != null) {
+                            listener.fail(message);
+                        } else {
+                            listener.fail("You did not work with each other");
+                        }
+
+                    } catch (Exception e) {
+                        listener.fail("Something went wrong. Please try again");
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+//                params.put("name", "Amirr");
+//                params.put("email", "oieurn@adf.co");
+//                params.put("phone", "+923002361459");
+//                params.put("password", "123465");
+//                params.put("role", "worker");
+                for (Map.Entry<String, String> entry : map.entrySet()) {
+                    params.put(entry.getKey(), entry.getValue());
+                }
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("X-Authorization"/*auth key*/, auth /*auth value*/);
+                return params;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                Map<String, String> responseHeaders = response.headers;
+                return super.parseNetworkResponse(response);
+            }
+        };
+        stringRequest.setRetryPolicy(
+                new DefaultRetryPolicy(10000,
+                        DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        
+	//Add request to queue
+	AppClass.mRequestQueue.add(stringRequest);
+    }

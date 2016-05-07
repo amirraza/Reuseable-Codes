@@ -1,0 +1,27 @@
+private void downloadFileNow(String fileUrl, String imageName) {
+        Uri uri = Uri.parse(fileUrl);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+//                set the notification
+//        request.setDescription("Downloading " + imageName).setTitle("Demo Download");
+
+//                set the path to where to save the file
+//                      save in app package directory
+//                request.setDestinationInExternalFilesDir(MainActivity.this,
+//                        Environment.DIRECTORY_DOWNLOADS, "logo.jpg");
+
+        //make your desired directory as // /MyDome/ImageFolder etc...
+        request.setDestinationInExternalPublicDir("/MyDemo/ImageFolder", imageName);
+
+
+	//make file visible by and manageable by system's download app
+        request.setVisibleInDownloadsUi(true);
+
+	//select which network, etc
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI
+                | DownloadManager.Request.NETWORK_MOBILE);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
+
+
+	//queue the download
+        myDownloadReference = downloadManager.enqueue(request);
+    }

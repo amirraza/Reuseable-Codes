@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/camera"
+        android:icon="@drawable/icon_camera_purple"
+        android:title="Take a photo" />
+    <item
+        android:id="@+id/gallery"
+        android:icon="@drawable/icon_gallery"
+        android:title="Pick from gallery" />
+    <divider />
+    <item
+        android:id="@+id/cancel"
+        android:icon="@drawable/icon_decline"
+        android:title="Cancel" />
+</menu>

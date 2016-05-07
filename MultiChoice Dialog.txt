@@ -1,0 +1,47 @@
+private void skillsDialog() {
+            final ArrayList<Integer> selectedSkill = new ArrayList<>();
+            CharSequence[] listToDisplay = new CharSequence[skillsList.size()]; //skillsList is a filled ArrayList
+            listToDisplay = (CharSequence[]) skillsList.toArray(listToDisplay);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Select Skills")
+                    .setCancelable(false)
+                    .setMultiChoiceItems(listToDisplay, null, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                            if (isChecked) {
+                                selectedSkill.add(which);
+                            } else if (selectedSkill.contains(which)) {
+                                selectedSkill.remove(Integer.valueOf(which));
+                            }
+                        }
+                    })
+                    .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            String skills = "";
+                            for (int i = 0; i < selectedSkill.size(); i++) {
+
+				//remove comma from last item
+                                if(i == (selectedSkill.size()-1)){
+                                    skills += skillsList.get((Integer) selectedSkill.get(i));
+				    
+				    //this is for API hit
+                                    //selectedSkillsForAPI.add(skillsListId.get((Integer) selectedSkill.get(i)));
+                                } else {
+                                    skills += skillsList.get((Integer) selectedSkill.get(i)) + ", ";
+                                    //selectedSkillsForAPI.add(skillsListId.get((Integer) selectedSkill.get(i)));
+                                }
+                            }
+                            selectedSkillsTV.setText(skills);
+                        }
+                    }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	                @Override
+        	        public void onClick(DialogInterface dialog, int which) {
+                	dialog.dismiss();
+
+                }
+            }).show();
+        
+    }
