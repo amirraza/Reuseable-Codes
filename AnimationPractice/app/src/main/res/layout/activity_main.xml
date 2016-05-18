@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/dummyTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dummy Text"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/dummyTxt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dummy Text"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/dummyTxt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Dummy Text"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/dummyTxt4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Dummy Text"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/dummyTxt5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Bounce"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/dummyTxt6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Zoom in with Bounce"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/dummyTxt7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Zoom in with 1 Bounce"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/go"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content"
+                android:text="Open Activity with ScaleUp animation, start from where the click is originate"
+                android:textSize="20sp"/>
+
+            <LinearLayout
+                android:id="@+id/animateLay"
+                android:layout_width="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_height="50dp"
+                android:background="@drawable/border"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="asdfasdf" />
+
+                <ListView
+                    android:id="@+id/myList"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+    <TextView
+        android:id="@+id/rotate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentRight="true"
+        android:text="Rotate 1"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/rotate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:text="Rotate 2"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/rotate3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Rotate 3"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/rotate4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="50dp"
+        android:text="Rotate 4"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/rotate5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentRight="true"
+        android:text="Rotate 5"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="30dp"/>
+</RelativeLayout>
