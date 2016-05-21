@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.go)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+//                finish();
                 Intent intent = new Intent(MainActivity.this,HomeActivity.class);
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeScaleUpAnimation(view,0,0,view.getWidth(),view.getHeight());
