@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 /**
  * Created by AmirRaza on 5/18/2016.
@@ -110,5 +112,12 @@ public class HomeActivity extends AppCompatActivity {
         objectAnimator6.setInterpolator(new DecelerateInterpolator());
         objectAnimator6.setDuration(1500);
         objectAnimator6.start();
+
+
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.circularProgress);
+        ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, 100); // see this max value coming back here, we animale towards that value
+        animation.setDuration (600); //in milliseconds
+        animation.setInterpolator (new AccelerateDecelerateInterpolator());
+        animation.start ();
     }
 }

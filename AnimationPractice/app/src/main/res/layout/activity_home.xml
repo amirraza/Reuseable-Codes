@@ -10,6 +10,17 @@
         android:layout_height="wrap_content"
         android:text="Start Animation"/>
 
+    <ProgressBar
+        android:id="@+id/circularProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:max="100"
+        android:progress="0"
+        android:rotation="90"
+        android:rotationY="180"
+        android:progressDrawable="@drawable/circular_bar"/>
 
     <ImageView
         android:id="@+id/pic1"
